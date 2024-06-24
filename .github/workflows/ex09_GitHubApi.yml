@@ -1,0 +1,21 @@
+name: Example 09 - GithubApi
+on: workflow_dispatch
+
+#The token is read only by default, we need to give it rights for this workflow
+permissions:
+  issues: write
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  modules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      #The token is a secret and must be passed in, cannot be accessed as env variable
+      - name: 🐙 Use GitHub Rest Api to Create Issue
+        run: . scripts/09_createissue.ps1 -Token ${{secrets.GITHUB_TOKEN}}

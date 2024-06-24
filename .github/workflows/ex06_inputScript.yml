@@ -1,0 +1,25 @@
+name: Example 06 - Inputs as Script Parameters
+on:
+  workflow_dispatch:
+    inputs:
+      color:
+        description: Color to set
+        required: false
+        default: green
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  inputOutputScript:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📤 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set color to ${{ inputs.color }}
+        id: color-selector
+        run: . scripts/06_color.ps1 -Color '${{ inputs.color }}'

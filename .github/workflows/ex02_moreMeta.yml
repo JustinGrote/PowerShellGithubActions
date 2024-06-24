@@ -1,0 +1,19 @@
+name: Example 02 - More Meta #Display name that will show in UI
+on: workflow_dispatch
+run-name: Run ${{ github.run_id }} by @${{ github.actor }}
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  theBasics:
+    #A display name other than the job
+    name: Demonstrate GHA Basics
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🕰️ Get the Date
+        id: getDate
+        run: |
+          $date = Get-Date
+          Write-Output "Congrats it worked at ${date}! 🎉🎉🎉"

@@ -1,0 +1,19 @@
+name: Example 03 - Script File
+on: workflow_dispatch
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  getExternalScript:
+    runs-on: ubuntu-latest
+    steps:
+      #Checkout is needed to get the script from the repo
+      - name: 📤 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📝 Run Script
+        run: . ./scripts/01_basic.ps1

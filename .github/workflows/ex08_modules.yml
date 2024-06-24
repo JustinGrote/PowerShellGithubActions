@@ -1,0 +1,24 @@
+name: Example 08 - Modules
+on: workflow_dispatch
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  modules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🐢 Install Pester
+        run: Install-PSResource Pester -Version 5.6.0 -Verbose -TrustRepository
+
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 📦 Install from Required Resources
+        run: Install-PSResource -RequiredResourceFile scripts/08_requiredresources.psd1 -Verbose -TrustRepository
+
+      - name: 📄 Report Installed Modules
+        run: |
+          Get-Module -ListAvailable
+          | Where-Object path -Like "$HOME/.local/share/powershell/Modules*"

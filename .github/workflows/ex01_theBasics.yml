@@ -1,0 +1,15 @@
+#This is the bare minimum a GitHub Actions workflow can be. It runs a script that outputs a message to the console.
+on: workflow_dispatch
+
+#This isn't technically required, and can also be set at the job level, but it defaults to bash so why not PowerShell?
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  theBasics:
+    runs-on: ubuntu-latest
+    steps:
+      - run: | #In YAML this lets you write the script across multiple lines, perfect for PowerShell
+          $date = Get-Date
+          Write-Output "Congrats it worked at ${date}! 🎉🎉🎉"

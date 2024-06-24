@@ -1,0 +1,35 @@
+name: Example 04 - Runner Info
+on: workflow_dispatch
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  getRunnerInfo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          "=== RUNNER INFO ==="
+          $PSVersionTable
+          ""
+
+          "=== ENV VARS ==="
+          dir env:
+          ""
+
+          "=== CURRENT DIRECTORY ==="
+          $PWD
+          ""
+
+          "=== VARIABLES ==="
+          Get-Variable | ft -auto name,value
+          ""
+
+          "=== LOADED MODULES ==="
+          get-module | ft -auto name,version
+          ""
+
+          "=== AVAILABLE MODULES ==="
+          get-module -listavailable | ft -auto name,version
+          ""

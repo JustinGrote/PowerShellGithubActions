@@ -4,17 +4,12 @@
   "hostRequirements": {
     "cpus": 4
   },
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+
+  // NOTE: This is a workaround for the powershell devcontainer not being published yet. We use the dotnet image which
+  // has the latest (as of the build) version of powershell already bundled
   "image": "mcr.microsoft.com/devcontainers/dotnet",
-  "features": {
-    // Uncomment this if you need a newer version of PowerShell then what ships with the dotnet devcontainer
-    "ghcr.io/devcontainers/features/powershell:1": {
-      "version": "latest"
-    }
-  },
-  // Allows our container to work in rootless mode which is more secure
-  "containerUser": "vscode",
-  "remoteUser": "vscode",
+
   // VSCode specific configuration
   "customizations": {
     "vscode": {
@@ -33,16 +28,6 @@
         "editor.inlayHints.enabled": "offUnlessPressed",
         "extensions.ignoreRecommendations": true, // Suppresses a message about PowerShell stable because we use preview extension
         "git.autofetch": true,
-        "powershell.codeFormatting.alignPropertyValuePairs": true,
-        "powershell.codeFormatting.autoCorrectAliases": true,
-        "powershell.codeFormatting.newLineAfterOpenBrace": true,
-        "powershell.codeFormatting.openBraceOnSameLine": true,
-        "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
-        "powershell.codeFormatting.preset": "OTBS",
-        "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
-        "powershell.codeFormatting.useConstantStrings": true,
-        "powershell.codeFormatting.useCorrectCasing": true,
-        "powershell.codeFormatting.whitespaceBetweenParameters": true,
         "powershell.powerShellDefaultVersion": "PowerShell",
         "terminal.integrated.defaultProfile.linux": "pwsh",
         "workbench.iconTheme": "vscode-icons"

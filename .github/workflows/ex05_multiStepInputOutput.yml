@@ -1,0 +1,25 @@
+name: Example 05 - Multi-Step Inputs and Outputs
+on:
+  workflow_dispatch:
+    inputs:
+      color:
+        description: Color to set
+        required: false
+        default: green
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  multiStepInputOutput:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set color to ${{ github.event.inputs.color }}
+        id: color-selector
+        run: |
+            "SELECTED_COLOR=${{ github.event.inputs.color }}" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+      - name: Get color
+        env:
+          SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+        run: Write-Output "The selected color is $env:SELECTED_COLOR"

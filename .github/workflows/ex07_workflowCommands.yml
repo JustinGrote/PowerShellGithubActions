@@ -1,0 +1,20 @@
+#Docs: https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions
+name: Example 07 - Workflow Commands
+on: workflow_dispatch
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  workflowCommandsDemo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📤 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Workflow Commands Demo
+        id: color-selector
+        run: . scripts/07_workflowCommands.ps1
