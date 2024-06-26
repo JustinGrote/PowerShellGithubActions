@@ -4,8 +4,8 @@ on:
     inputs:
       color:
         description: Color to set
-        required: false
-        default: green
+        type: boolean
+        required: true
 
 defaults:
   run:
@@ -22,4 +22,4 @@ jobs:
 
       - name: Set color to ${{ inputs.color }}
         id: color-selector
-        run: . scripts/06_color.ps1 -Color '${{ inputs.color }}'
+        run: . scripts/06_color.ps1 -Color ${{ inputs.color }}

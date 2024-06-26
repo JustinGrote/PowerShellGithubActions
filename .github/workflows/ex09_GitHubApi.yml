@@ -10,7 +10,7 @@ defaults:
     shell: pwsh
 
 jobs:
-  modules:
+  createIssueApi:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout

@@ -1,2 +1,2 @@
-$date = Get-Date
+$date = Get-Date 
 Write-Output "Congrats it worked at ${date}! 🎉🎉🎉"
