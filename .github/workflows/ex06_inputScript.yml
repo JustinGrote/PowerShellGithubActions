@@ -22,4 +22,4 @@ jobs:
 
       - name: Set color to ${{ inputs.color }}
         id: color-selector
-        run: . scripts/06_color.ps1 -Color ${{ inputs.color }}
+        run: . scripts/06_color.ps1 -Color:$${{ inputs.color }}
